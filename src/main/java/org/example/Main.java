@@ -13,32 +13,27 @@ public class Main {
         String vowels = word.replaceAll("[^аеиіоуяєюї]", "");
         return vowels.length();
     }
-    public static StringBuilder clearText(StringBuilder text){
+    public static StringBuilder sortText(StringBuilder text){
         Pattern pattern = Pattern.compile("[!?.,]");
         Matcher matcher = pattern.matcher(text);
         StringBuilder result = new StringBuilder();
         while (matcher.find()){
             matcher.appendReplacement(result, "");
         }
-        return result;
-    }
-    public static List<String> prepareForCompare(StringBuilder text){
-        Pattern pattern = Pattern.compile("\\s+");
-        List<String> data = new ArrayList<>(Arrays.asList(pattern.split(text)));
-        return data;
-    }
-    public static void main(String[] args){
-        StringBuilder text = new StringBuilder();
-        text.append("Привіт, як справи у тебе?");
-        System.out.println(text);
-        text = clearText(text);
-        List<String> data = prepareForCompare(text);
+        pattern = Pattern.compile("\\s+");
+        List<String> data = new ArrayList<>(Arrays.asList(pattern.split(result)));
         data.sort(Comparator.comparingInt(Main::defineVowels));
         text.setLength(0);
         for (String word:data){
             text.append(word).append(" ");
         }
+        return text;
+    }
+    public static void main(String[] args){
+        StringBuilder text = new StringBuilder();
+        text.append("Привіт, як справи у тебе?");
         System.out.println(text);
+        System.out.println(sortText(text));
     }
 }
 
