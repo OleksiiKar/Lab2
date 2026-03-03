@@ -1,9 +1,12 @@
 package org.example;
 
+import java.time.Period;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class Main {
     public static int defineVowels(String word){
@@ -13,12 +16,16 @@ public class Main {
     public static void main(String[] args){
         StringBuilder text = new StringBuilder();
         text.append("Привіт, як справи у тебе?");
-        String text_str = text.toString();
-        text_str = text_str.replaceAll("[!?.,]", "").toLowerCase();
-        List<String> data = new ArrayList<>(Arrays.asList(text_str.split("\\s+")));
-        System.out.println(data);
+        System.out.println(text);
+        Pattern pattern = Pattern.compile("[!?.,]");
+        Matcher matcher = pattern.matcher(text);
+        StringBuilder result = new StringBuilder();
+        while (matcher.find()){
+            matcher.appendReplacement(result, "");
+        }
+        pattern = Pattern.compile("\\s+");
+        List<String> data = new ArrayList<>(Arrays.asList(pattern.split(result)));
         data.sort(Comparator.comparingInt(Main::defineVowels));
-        System.out.println(data);
         text.setLength(0);
         for (String word:data){
             text.append(word).append(" ");
