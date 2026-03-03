@@ -7,7 +7,7 @@ import java.util.List;
 
 public class Main {
     public static int defineVowels(String word){
-        String vowels = word.replaceAll("[бпвмфдтзсцлнржшчгкхґй]", "");
+        String vowels = word.replaceAll("[^аеиіоуяєюї]", "");
         return vowels.length();
     }
     public static void main(String[] args){
