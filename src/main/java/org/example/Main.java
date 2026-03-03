@@ -1,25 +1,24 @@
 package org.example;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Comparator;
+import java.util.List;
 
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main {
     public static int defineVowels(String word){
         String vowels = word.replaceAll("[бпвмфдтзсцлнржшчгкхґй]", "");
         return vowels.length();
     }
-    static void main() {
+    public static void main(String[] args){
         StringBuilder text = new StringBuilder();
         text.append("Привіт, як справи у тебе?");
         String text_str = text.toString();
         text_str = text_str.replaceAll("[!?.,]", "").toLowerCase();
-        String[] data = text_str.split("\\s+");
-        System.out.println(Arrays.toString(data));
-
-        text = new StringBuilder(text_str);
+        List<String> data = new ArrayList<>(Arrays.asList(text_str.split("\\s+")));
+        System.out.println(data);
+        data.sort(Comparator.comparing(Main::defineVowels));
+        System.out.println(data);
     }
 }
 
