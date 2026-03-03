@@ -7,6 +7,11 @@ import java.util.Arrays;
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main {
+    public static int defineVowels(String word){
+        String vowels = word.replaceAll("[бпвмфдтзсцлнржшчгкхґй]", "");
+            return vowels.length();
+        }
+    }
     static void main() {
         StringBuilder text = new StringBuilder();
         text.append("Привіт, як справи у тебе?");
@@ -14,14 +19,7 @@ public class Main {
         text_str = text_str.replaceAll("[!?.,]", "").toLowerCase();
         String[] data = text_str.split("\\s+");
         System.out.println(Arrays.toString(data));
-        for (String word : data){
-            for(int i=0; i<word.length(); i++){
-                char letter = word.charAt(i);
-                if (letter=='и'){
-                    System.out.println(letter);
-                }
-            }
-        }
+        
         text = new StringBuilder(text_str);
     }
 }
