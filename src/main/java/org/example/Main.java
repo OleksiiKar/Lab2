@@ -8,7 +8,9 @@ public class Main {
         text.append("Привіт, як справи у тебе?");
         String text_str = text.toString();
         text_str = text_str.replaceAll("[!?.,]", "").toLowerCase();
+        String[] data = text_str.split("\\s+");
         System.out.println(text_str);
+        text = new StringBuilder(text_str);
     }
 }
 
