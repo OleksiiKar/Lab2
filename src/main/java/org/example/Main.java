@@ -17,8 +17,13 @@ public class Main {
         text_str = text_str.replaceAll("[!?.,]", "").toLowerCase();
         List<String> data = new ArrayList<>(Arrays.asList(text_str.split("\\s+")));
         System.out.println(data);
-        data.sort(Comparator.comparing(Main::defineVowels));
+        data.sort(Comparator.comparingInt(Main::defineVowels));
         System.out.println(data);
+        text.setLength(0);
+        for (String word:data){
+            text.append(word).append(" ");
+        }
+        System.out.println(text);
     }
 }
 
