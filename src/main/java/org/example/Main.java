@@ -14,6 +14,14 @@ public class Main {
         text_str = text_str.replaceAll("[!?.,]", "").toLowerCase();
         String[] data = text_str.split("\\s+");
         System.out.println(Arrays.toString(data));
+        for (String word : data){
+            for(int i=0; i<word.length(); i++){
+                char letter = word.charAt(i);
+                if (letter=='и'){
+                    System.out.println(letter);
+                }
+            }
+        }
         text = new StringBuilder(text_str);
     }
 }
